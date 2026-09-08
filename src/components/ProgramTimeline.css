@@ -1,0 +1,132 @@
+.program-section {
+  background: var(--paper-raised);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.program-spine {
+  max-width: 780px;
+}
+
+.program-row {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 20px;
+}
+
+.program-rail {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.program-rail::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--line);
+}
+
+.program-row:last-child .program-rail::before {
+  bottom: 50%;
+}
+
+.program-row:first-child .program-rail::before {
+  top: 26px;
+}
+
+.program-node {
+  position: relative;
+  z-index: 1;
+  width: 12px;
+  height: 12px;
+  margin-top: 20px;
+  border-radius: 50%;
+  background: var(--paper-raised);
+  border: 1.5px solid var(--line-dark);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.program-row.is-open .program-node {
+  background: var(--rust);
+  border-color: var(--rust);
+}
+
+.program-body {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 22px;
+  margin-bottom: 22px;
+}
+
+.program-toggle {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  background: transparent;
+  border: none;
+  padding: 10px 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.program-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--rust);
+  flex-shrink: 0;
+}
+
+.program-title {
+  font-family: var(--font-display);
+  font-size: 21px;
+  color: var(--ink);
+  flex: 1;
+}
+
+.program-caret {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.program-detail {
+  padding-left: 34px;
+  margin-top: 8px;
+}
+
+.program-intro {
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin-bottom: 14px;
+}
+
+.program-points {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+
+.program-points li {
+  font-size: 13.5px;
+  color: var(--sage);
+  background: rgba(87, 112, 95, 0.09);
+  border: 1px solid rgba(87, 112, 95, 0.22);
+  border-radius: 2px;
+  padding: 5px 10px;
+}
+
+@media (max-width: 600px) {
+  .program-title {
+    font-size: 18px;
+  }
+
+  .program-detail {
+    padding-left: 0;
+  }
+}

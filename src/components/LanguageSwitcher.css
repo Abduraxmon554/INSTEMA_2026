@@ -1,0 +1,46 @@
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--paper-raised);
+}
+
+.lang-switcher-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft);
+  padding: 6px 12px;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-switcher-btn:hover {
+  color: var(--ink);
+}
+
+.lang-switcher-btn.is-active {
+  background: var(--ink);
+  color: var(--paper-raised);
+}
+
+.lang-switcher--header {
+  margin-left: auto;
+}
+
+.lang-switcher--mobile {
+  margin: 14px 28px 4px;
+}
+
+.lang-switcher--footer {
+  margin-top: 14px;
+}

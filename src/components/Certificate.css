@@ -1,0 +1,152 @@
+.certificate-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f5e6d3 0%, #e8d4c0 100%);
+  min-height: 100vh;
+}
+
+.certificate-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.certificate-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.certificate-card {
+  background: linear-gradient(135deg, #fff9e6 0%, #ffe6cc 100%);
+  border: 3px solid #d4af37;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.certificate-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 35px rgba(212, 175, 55, 0.3);
+}
+
+.cert-badge {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.cert-name {
+  font-size: 1.4rem;
+  color: #333;
+  margin: 0.5rem 0;
+  font-weight: bold;
+}
+
+.cert-profession {
+  color: #d4af37;
+  font-size: 1rem;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.cert-info {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.cert-info p {
+  margin: 0.8rem 0;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.cert-info strong {
+  color: #d4af37;
+}
+
+.download-btn {
+  background: linear-gradient(135deg, #d4af37 0%, #c9a82a 100%);
+  color: #333;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.download-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.download-btn:active {
+  transform: scale(0.98);
+}
+
+.no-certificates {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.no-certificates p {
+  margin: 1rem 0;
+}
+
+.cert-loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .certificate-title {
+    font-size: 1.8rem;
+  }
+
+  .certificates-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-badge {
+    font-size: 2rem;
+  }
+
+  .cert-name {
+    font-size: 1.1rem;
+  }
+
+  .download-btn {
+    width: 100%;
+  }
+}

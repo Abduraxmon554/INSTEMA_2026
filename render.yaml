@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: masterclass-api
+    env: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm run server:prod
+    disk:
+      name: masterclass-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 20

@@ -1,0 +1,34 @@
+.back-to-top {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 900;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--ink);
+  color: var(--paper-raised);
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(22, 35, 43, 0.28);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.back-to-top:hover {
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 14px 30px rgba(22, 35, 43, 0.36);
+}
+
+.back-to-top:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+@media (max-width: 560px) {
+  .back-to-top {
+    bottom: 16px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
+  }
+}

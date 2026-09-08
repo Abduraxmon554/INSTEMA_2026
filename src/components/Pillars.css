@@ -1,0 +1,80 @@
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.pillar-card {
+  position: relative;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 30px 26px;
+  overflow: hidden;
+  transition: box-shadow 0.3s var(--ease), border-color 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+
+.pillar-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--rust), var(--sage), var(--rust));
+  background-size: 200% 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ease);
+}
+
+.pillar-card:hover::before {
+  transform: scaleX(1);
+  animation: gradient-flow 3s linear infinite;
+}
+
+.pillar-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--rust);
+  transform: translateY(-6px);
+}
+
+.pillar-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ink);
+  font-size: 19px;
+  filter: grayscale(1) brightness(1.9) contrast(0.9);
+  transition: transform 0.4s var(--ease);
+}
+
+.pillar-card:hover .pillar-icon {
+  transform: scale(1.12) rotate(-8deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pillar-card:hover::before {
+    animation: none;
+  }
+  .pillar-card:hover .pillar-icon {
+    transform: none;
+  }
+}
+
+.pillar-card h3 {
+  font-size: 18px;
+  margin-top: 16px;
+  margin-bottom: 10px;
+}
+
+.pillar-card p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.5;
+}
