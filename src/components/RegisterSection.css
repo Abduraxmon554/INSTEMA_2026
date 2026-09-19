@@ -1,0 +1,192 @@
+.register-section {
+  background: var(--accent-bg);
+  color: var(--accent-fg-raised);
+  position: relative;
+  overflow: hidden;
+}
+
+.register-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 56px;
+}
+
+.register-info .section-kicker {
+  color: #d9b6ae;
+}
+
+.register-lang-switcher {
+  margin-bottom: 24px;
+}
+
+.register-info .section-title {
+  color: var(--accent-fg-raised);
+  margin-bottom: 16px;
+}
+
+.register-info .section-lede {
+  color: #b7bdc0;
+}
+
+.register-bullets {
+  list-style: none;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.register-bullets li {
+  font-size: 15px;
+  color: #cdd3d5;
+  padding-left: 18px;
+  position: relative;
+}
+
+.register-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  background: var(--rust);
+}
+
+.register-seats {
+  margin-top: 26px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: #8b949a;
+}
+
+.register-form-wrap {
+  position: relative;
+  z-index: 1;
+  background: rgba(var(--paper-raised-rgb), 0.9);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  color: var(--ink);
+  padding: 36px;
+  border-radius: 3px;
+  box-shadow: var(--shadow-lg);
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex: 1;
+}
+
+.field-row {
+  display: flex;
+  gap: 16px;
+}
+
+.field label {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.field input,
+.field textarea {
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--paper);
+  color: var(--ink);
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--rust);
+}
+
+.consent-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.consent-field input {
+  flex: 0 0 auto;
+  width: 17px;
+  height: 17px;
+  margin: 2px 0 0;
+  accent-color: var(--rust);
+}
+
+.field-error {
+  font-size: 12.5px;
+  color: var(--rust);
+}
+
+.register-form-error {
+  font-size: 14px;
+  color: var(--rust);
+  background: rgba(178, 58, 46, 0.08);
+  border: 1px solid rgba(178, 58, 46, 0.3);
+  padding: 10px 12px;
+  border-radius: 2px;
+}
+
+.register-success {
+  padding: 20px 4px;
+}
+
+.register-success h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.register-success p {
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.register-payment-button {
+  margin-bottom: 12px;
+}
+
+@media (max-width: 860px) {
+  .register-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .register-form-wrap {
+    padding: 26px;
+  }
+
+  .field-row {
+    flex-direction: column;
+  }
+}
+
+.register-honeypot {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

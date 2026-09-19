@@ -1,0 +1,281 @@
+.reviews {
+  padding: 4rem 2rem;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.reviews-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.reviews-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.rating-summary {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.average-rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.average-number {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffc107;
+}
+
+.rating-summary .stars {
+  font-size: 2rem;
+}
+
+.rating-count {
+  color: #666;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.star {
+  color: #ddd;
+  font-size: 1.2rem;
+  margin: 0 2px;
+}
+
+.star.filled {
+  color: #ffc107;
+}
+
+.review-form-wrapper {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.review-form-wrapper h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 1.3rem;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #ffc107;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+}
+
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 1rem;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reviews-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.review-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-left: 4px solid #ffc107;
+}
+
+.review-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.review-header .stars {
+  font-size: 1.2rem;
+}
+
+.review-date {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.review-comment {
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.no-reviews {
+  text-align: center;
+  color: #999;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.reviews-loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .reviews-title {
+    font-size: 1.8rem;
+  }
+
+  .average-number {
+    font-size: 2rem;
+  }
+
+  .review-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}
+
+.field-error {
+  font-size: 12.5px;
+  color: var(--rust, #b3462c);
+  margin: 4px 0 0;
+}
+
+/* ===== Dark rejim moslamalari ===== */
+[data-theme="dark"] .reviews {
+  background: var(--paper);
+}
+
+[data-theme="dark"] .reviews-title,
+[data-theme="dark"] .review-form-wrapper h3,
+[data-theme="dark"] .form-group label {
+  color: var(--ink);
+}
+
+[data-theme="dark"] .rating-summary,
+[data-theme="dark"] .review-form-wrapper,
+[data-theme="dark"] .review-card {
+  background: var(--paper-raised);
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .rating-count,
+[data-theme="dark"] .review-comment,
+[data-theme="dark"] .reviews-loading {
+  color: var(--ink-soft);
+}
+
+[data-theme="dark"] .review-date,
+[data-theme="dark"] .no-reviews {
+  color: var(--muted);
+}
+
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+[data-theme="dark"] .review-header {
+  border-bottom-color: var(--line);
+}
+
+[data-theme="dark"] .success-message {
+  background: rgba(87, 112, 95, 0.25);
+  color: #9fd6b2;
+}
