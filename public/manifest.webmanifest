@@ -1,0 +1,16 @@
+{
+  "name": "INSTEMA Toshkent — Master-class",
+  "short_name": "INSTEMA",
+  "description": "Toshkentda manual terapiya va osteopatiya bo'yicha xalqaro amaliy master-class.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f1ece2",
+  "theme_color": "#16232b",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
