@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: instema-uz
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: https://instema.uz,https://www.instema.uz

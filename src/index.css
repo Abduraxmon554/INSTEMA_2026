@@ -1,0 +1,635 @@
+:root {
+  --ink: #16232b;
+  --ink-soft: #2a3a43;
+  --paper: #f1ece2;
+  --paper-raised: #fbf8f2;
+  --rust: #b23a2e;
+  --rust-dim: #8f2e25;
+  --sage: #57705f;
+  --line: #d9cfbd;
+  --line-dark: #3a4a52;
+  --muted: #6b7278;
+
+  /* rgba() ichida ishlatish uchun — mavzu almashganda ham shaffoflik ishlaydi */
+  --paper-rgb: 241, 236, 226;
+  --paper-raised-rgb: 251, 248, 242;
+  --ink-rgb: 22, 35, 43;
+
+  /* "Accent" bloklar (Hero, Footer, Speaker karta, Pricing karta, Register
+     bo'limi) — dizayn jihatidan har doim to'q rangda qoladi, dark/light
+     rejimga qarab o'zgarmaydi (brend zolasi kabi ishlaydi). */
+  --accent-bg: #16232b;
+  --accent-fg: #f1ece2;
+  --accent-fg-raised: #fbf8f2;
+
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --max-width: 1180px;
+  color-scheme: light;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  --shadow-sm: 0 1px 2px rgba(22, 35, 43, 0.06), 0 1px 1px rgba(22, 35, 43, 0.04);
+  --shadow-md: 0 8px 24px rgba(22, 35, 43, 0.10), 0 2px 6px rgba(22, 35, 43, 0.06);
+  --shadow-lg: 0 24px 60px rgba(22, 35, 43, 0.18), 0 6px 16px rgba(22, 35, 43, 0.08);
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===================== DARK MODE ===================== */
+[data-theme="dark"] {
+  --ink: #eef1f2;
+  --ink-soft: #c7cdd1;
+  --paper: #121a1f;
+  --paper-raised: #1a242b;
+  --rust: #e2695a;
+  --rust-dim: #ef8c7f;
+  --sage: #7fa38d;
+  --line: #2d3941;
+  --line-dark: #465561;
+  --muted: #8b98a1;
+
+  --paper-rgb: 18, 26, 31;
+  --paper-raised-rgb: 26, 36, 43;
+  --ink-rgb: 238, 241, 242;
+
+  color-scheme: dark;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35), 0 1px 1px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55), 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Mavzu almashganda butun sayt bo'ylab yumshoq o'tish */
+body,
+header,
+footer,
+section,
+.site-header,
+.site-topbar,
+.card,
+.btn,
+input,
+textarea,
+select {
+  transition: background-color 0.35s var(--ease), color 0.35s var(--ease),
+    border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  header,
+  footer,
+  section,
+  .site-header,
+  .site-topbar,
+  .card,
+  .btn,
+  input,
+  textarea,
+  select {
+    transition: none !important;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id],
+div[id] {
+  scroll-margin-top: 96px;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--rust);
+  color: var(--paper-raised);
+}
+
+:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 3px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 18px;
+  }
+}
+
+.section {
+  padding: 88px 0;
+}
+
+@media (max-width: 780px) {
+  .section {
+    padding: 56px 0;
+  }
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+
+.section-kicker {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--rust);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 40px);
+}
+
+.section-lede {
+  margin-top: 16px;
+  font-size: 18px;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 14px 26px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease),
+    border-color 0.2s var(--ease), transform 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--rust);
+  color: var(--paper-raised);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+  background: var(--rust-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(143, 46, 37, 0.32);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--line-dark);
+  color: var(--ink);
+}
+
+.btn-outline:hover {
+  border-color: var(--ink);
+  background: rgba(22, 35, 43, 0.04);
+  transform: translateY(-2px);
+}
+
+.btn-ghost-light {
+  background: transparent;
+  border-color: rgba(241, 236, 226, 0.4);
+  color: var(--paper-raised);
+}
+
+.btn-ghost-light:hover {
+  border-color: var(--paper-raised);
+  background: rgba(241, 236, 226, 0.08);
+  transform: translateY(-2px);
+}
+
+.btn-block {
+  width: 100%;
+  justify-content: center;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.eyebrow-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ===================== SCROLL REVEAL ANIMATSIYALARI ===================== */
+/* Reveal.jsx komponenti IntersectionObserver orqali shu klasslarni ishlatadi. */
+
+.reveal {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.reveal-up {
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.reveal-fade {
+  transition: opacity 0.8s var(--ease);
+}
+
+.reveal-scale {
+  transform: scale(0.94);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+.reveal-left {
+  transform: translateX(-32px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.reveal-right {
+  transform: translateX(32px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Bolalarni birma-bir (stagger) chiqarish uchun */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+.reveal-stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger.is-visible > *:nth-child(1) { transition-delay: 0.02s; }
+.reveal-stagger.is-visible > *:nth-child(2) { transition-delay: 0.09s; }
+.reveal-stagger.is-visible > *:nth-child(3) { transition-delay: 0.16s; }
+.reveal-stagger.is-visible > *:nth-child(4) { transition-delay: 0.23s; }
+.reveal-stagger.is-visible > *:nth-child(5) { transition-delay: 0.3s; }
+.reveal-stagger.is-visible > *:nth-child(6) { transition-delay: 0.37s; }
+.reveal-stagger.is-visible > *:nth-child(7) { transition-delay: 0.44s; }
+.reveal-stagger.is-visible > *:nth-child(8) { transition-delay: 0.51s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Kichik doimiy mikro-animatsiyalar */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes soft-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(178, 58, 46, 0.35); }
+  70% { box-shadow: 0 0 0 10px rgba(178, 58, 46, 0); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fade-in-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.anim-float {
+  animation: float-y 4.5s var(--ease) infinite;
+}
+
+.anim-pulse-cta {
+  animation: soft-pulse 2.6s var(--ease) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-float,
+  .anim-pulse-cta {
+    animation: none !important;
+  }
+}
+
+/* ===================== GRADIENT MOTION ===================== */
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradient-text {
+  background: linear-gradient(
+    100deg,
+    var(--rust) 0%,
+    var(--sage) 35%,
+    var(--rust-dim) 65%,
+    var(--rust) 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-flow 7s linear infinite;
+}
+
+.gradient-bg-animated {
+  background: linear-gradient(
+    120deg,
+    var(--rust) 0%,
+    var(--rust-dim) 30%,
+    var(--sage) 60%,
+    var(--rust) 100%
+  );
+  background-size: 260% 260%;
+  animation: gradient-flow 9s ease infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text,
+  .gradient-bg-animated {
+    animation: none !important;
+    background-size: auto;
+  }
+}
+
+/* ===================== MICRO-INTERACTIONS / HOVER ===================== */
+
+/* Button shine sweep on hover */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.55s var(--ease);
+  pointer-events: none;
+}
+
+.btn:hover::before {
+  left: 130%;
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.98) !important;
+}
+
+/* Generic lift/hover-glow utilities, reusable across cards */
+.hover-lift {
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-tilt {
+  transition: transform 0.35s var(--ease);
+  transform-style: preserve-3d;
+}
+
+.hover-tilt:hover {
+  transform: perspective(700px) rotateX(2.5deg) rotateY(-2.5deg) translateY(-4px);
+}
+
+/* Icon pop micro-interaction */
+@keyframes icon-pop {
+  0% { transform: scale(1) rotate(0deg); }
+  45% { transform: scale(1.18) rotate(-6deg); }
+  100% { transform: scale(1.08) rotate(0deg); }
+}
+
+.icon-pop-hover:hover {
+  animation: icon-pop 0.45s var(--ease);
+}
+
+/* Underline grow (used for inline text links) */
+.link-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1.5px;
+  background: currentColor;
+  transition: width 0.25s var(--ease);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn::before {
+    display: none;
+  }
+  .hover-lift,
+  .hover-tilt {
+    transition: none;
+  }
+  .icon-pop-hover:hover {
+    animation: none;
+  }
+}
+
+/* ===================== COUNTER / PROGRESS ===================== */
+
+.count-up {
+  font-variant-numeric: tabular-nums;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  z-index: 1200;
+  background: transparent;
+  pointer-events: none;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    var(--rust) 0%,
+    var(--rust-dim) 40%,
+    var(--sage) 100%
+  );
+  background-size: 200% 100%;
+  animation: gradient-flow 4s linear infinite;
+  transition: width 0.1s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress-bar {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Simple determinate progress bar (e.g. seats/registration) */
+.progress-track {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(var(--ink-rgb), 0.08);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--rust), var(--sage));
+  background-size: 200% 100%;
+  animation: gradient-flow 5s linear infinite;
+  transition: width 1s var(--ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill {
+    animation: none;
+  }
+}
+
+/* ===================== SUBTLE PARALLAX ===================== */
+
+.parallax-layer {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-layer {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Ambient floating gradient blobs, used behind hero-style sections */
+@keyframes blob-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(3%, -4%) scale(1.06); }
+  66% { transform: translate(-3%, 3%) scale(0.96); }
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: blob-drift 14s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none;
+  }
+}
