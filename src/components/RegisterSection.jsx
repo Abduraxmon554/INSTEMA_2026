@@ -52,19 +52,11 @@ export default function RegisterSection() {
     setTouched(true);
     if (!isValid) return;
 
-    // Spam himoyasi: honeypot maydoni to'ldirilgan bo'lsa yoki forma juda
-    // tez yuborilgan bo'lsa (bot xatti-harakati), jimgina to'xtatiladi.
+    // Spam himoyasi: honeypot maydoni to'ldirilgan bo'lsa, jimgina to'xtatiladi.
     if (form.hpFax) {
       setStatus("success");
       setForm(EMPTY_FORM);
       setTouched(false);
-      return;
-    }
-    const elapsedSeconds = (Date.now() - mountedAt.current) / 1000;
-    if (elapsedSeconds < MIN_SUBMIT_SECONDS) {
-      setStatus("error");
-      setErrorMsg(register.form.spamError || "Iltimos, formani qayta tekshirib yuboring.");
-      toast.error(register.form.spamError || "Iltimos, formani qayta tekshirib yuboring.");
       return;
     }
 
