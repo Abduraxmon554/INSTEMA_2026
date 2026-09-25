@@ -257,6 +257,24 @@ export const infoBullets = [
 
 export const galleryVideos = [
   {
+    id: "new-video-1",
+    src: "/media/videos/new-video-1.mp4",
+    poster: "/media/videos/new-video-1-poster.jpg",
+    caption: "Master-klassdan yangi lavha — 1",
+  },
+  {
+    id: "new-video-2",
+    src: "/media/videos/new-video-2.mp4",
+    poster: "/media/videos/new-video-2-poster.jpg",
+    caption: "Master-klassdan amaliy mashg'ulot — 2",
+  },
+  {
+    id: "new-video-3",
+    src: "/media/videos/new-video-3.mp4",
+    poster: "/media/videos/new-video-3-poster.jpg",
+    caption: "Master-klassdan klinik amaliyot — 3",
+  },
+  {
     id: "testimonial",
     src: "/media/videos/testimonial.mp4",
     poster: "/media/videos/testimonial-poster.jpg",

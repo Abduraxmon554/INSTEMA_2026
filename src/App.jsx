@@ -15,8 +15,7 @@ import ScrollProgress from "./components/ScrollProgress";
 import CursorTrail from "./effects/CursorTrail";
 import useSmoothAnchorScroll from "./effects/useSmoothAnchorScroll";
 
-// Admin sahifalari kod bo'lib (code-split) yuklanadi — oddiy tashrif
-// buyuruvchilar uchun bosh sahifa yengil bo'lib qoladi.
+
 const Admin = lazy(() => import("./pages/Admin"));
 const AdminLogin = lazy(() => import("./components/AdminLogin"));
 
@@ -55,6 +54,7 @@ export default function App() {
                       <Route path="/" element={<Home />} />
                       <Route path="/login" element={<AdminLogin />} />
                       <Route path="/seminar" element={<Admin />} />
+                      <Route path="/admin" element={<Admin />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </Suspense>

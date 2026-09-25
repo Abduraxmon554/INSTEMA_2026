@@ -1,8 +1,3 @@
-// Master-classning markazlashtirilgan sana/vaqt ma'lumotlari.
-// db.json dagi `schedule` massividagi kunlar bilan bir xil bo'lishi kerak.
-// Manzil hali aniqlanmagani uchun aniq manzil ko'rsatilmaydi — ro'yxatdan
-// o'tganlarga alohida yuboriladi (haqiqiy bo'lmagan manzilni ixtiro qilmaslik uchun).
-
 export const EVENT_START_ISO = "2026-09-15T09:00:00+05:00";
 export const EVENT_END_ISO = "2026-09-16T15:00:00+05:00";
 export const EVENT_TIMEZONE = "Asia/Tashkent";
@@ -19,7 +14,7 @@ export function isEventPast() {
   return Date.now() > getEventEndDate().getTime();
 }
 
-// Qolgan vaqtni { days, hours, minutes, seconds, total } ko'rinishida qaytaradi.
+
 export function getTimeRemaining() {
   const total = getEventStartDate().getTime() - Date.now();
   if (total <= 0) {
@@ -36,8 +31,6 @@ function toIcsDate(date) {
   return date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
 }
 
-// .ics faylini yaratib, brauzerda yuklab olishga majbur qiladi
-// (Google Calendar, Outlook, Apple Calendar bilan mos).
 export function downloadEventIcs({ title, description, location, url }) {
   const start = toIcsDate(getEventStartDate());
   const end = toIcsDate(getEventEndDate());

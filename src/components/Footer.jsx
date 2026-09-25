@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeToggle from "./ThemeToggle";
@@ -25,8 +26,8 @@ export default function Footer() {
           <a href="#spiker">{nav.speaker}</a>
           <a href="#kimlar-uchun">{nav.audience}</a>
           <a href="#royxat">{nav.register}</a>
-          <a href="/login">{nav.login}</a>
-          <a href="/seminar">{nav.admin}</a>
+          <Link to="/login">{nav.login}</Link>
+          <Link to="/seminar">{nav.admin}</Link>
         </nav>
       </div>
       <div className="container">

@@ -291,6 +291,24 @@ export const translations = {
       audioNote: "Original audio: ispan tili",
       videos: [
         {
+          id: "new-video-1",
+          src: "/media/videos/new-video-1.mp4",
+          poster: "/media/videos/new-video-1-poster.jpg",
+          caption: "Master-klassdan yangi lavha — 1",
+        },
+        {
+          id: "new-video-2",
+          src: "/media/videos/new-video-2.mp4",
+          poster: "/media/videos/new-video-2-poster.jpg",
+          caption: "Master-klassdan amaliy mashg'ulot — 2",
+        },
+        {
+          id: "new-video-3",
+          src: "/media/videos/new-video-3.mp4",
+          poster: "/media/videos/new-video-3-poster.jpg",
+          caption: "Master-klassdan klinik amaliyot — 3",
+        },
+        {
           id: "profile-session",
           src: "/media/videos/profile-session.mp4",
           poster: "/media/videos/profile-session-poster.jpg",
@@ -781,6 +799,24 @@ export const translations = {
       closeLabel: "Cerrar",
       audioNote: "Audio original: español",
       videos: [
+        {
+          id: "new-video-1",
+          src: "/media/videos/new-video-1.mp4",
+          poster: "/media/videos/new-video-1-poster.jpg",
+          caption: "Nuevo fragmento del masterclass — 1",
+        },
+        {
+          id: "new-video-2",
+          src: "/media/videos/new-video-2.mp4",
+          poster: "/media/videos/new-video-2-poster.jpg",
+          caption: "Sesión práctica del masterclass — 2",
+        },
+        {
+          id: "new-video-3",
+          src: "/media/videos/new-video-3.mp4",
+          poster: "/media/videos/new-video-3-poster.jpg",
+          caption: "Práctica clínica del masterclass — 3",
+        },
         {
           id: "profile-session",
           src: "/media/videos/profile-session.mp4",
@@ -1273,6 +1309,24 @@ export const translations = {
       audioNote: "Original audio: Spanish",
       videos: [
         {
+          id: "new-video-1",
+          src: "/media/videos/new-video-1.mp4",
+          poster: "/media/videos/new-video-1-poster.jpg",
+          caption: "New masterclass clip — 1",
+        },
+        {
+          id: "new-video-2",
+          src: "/media/videos/new-video-2.mp4",
+          poster: "/media/videos/new-video-2-poster.jpg",
+          caption: "Masterclass practical session — 2",
+        },
+        {
+          id: "new-video-3",
+          src: "/media/videos/new-video-3.mp4",
+          poster: "/media/videos/new-video-3-poster.jpg",
+          caption: "Masterclass clinical practice — 3",
+        },
+        {
           id: "profile-session",
           src: "/media/videos/profile-session.mp4",
           poster: "/media/videos/profile-session-poster.jpg",
@@ -1763,6 +1817,24 @@ export const translations = {
       closeLabel: "Закрыть",
       audioNote: "Оригинальная аудиодорожка: испанский",
       videos: [
+        {
+          id: "new-video-1",
+          src: "/media/videos/new-video-1.mp4",
+          poster: "/media/videos/new-video-1-poster.jpg",
+          caption: "Новый фрагмент мастер-класса — 1",
+        },
+        {
+          id: "new-video-2",
+          src: "/media/videos/new-video-2.mp4",
+          poster: "/media/videos/new-video-2-poster.jpg",
+          caption: "Практическое занятие мастер-класса — 2",
+        },
+        {
+          id: "new-video-3",
+          src: "/media/videos/new-video-3.mp4",
+          poster: "/media/videos/new-video-3-poster.jpg",
+          caption: "Клиническая практика мастер-класса — 3",
+        },
         {
           id: "profile-session",
           src: "/media/videos/profile-session.mp4",
