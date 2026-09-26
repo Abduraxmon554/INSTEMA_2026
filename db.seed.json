@@ -52,33 +52,7 @@
       ]
     }
   ],
-  "reviews": [
-    {
-      "id": "review-1",
-      "registrationId": null,
-      "rating": 5,
-      "comment": "Juda ajoyib master-class! Juan José juda yaxshi o'qitdi.",
-      "createdAt": "2026-08-25T10:00:00.000Z"
-    },
-    {
-      "rating": 5,
-      "comment": "zorakan",
-      "createdAt": "2026-09-01T17:05:33.687Z",
-      "id": "mtCHmt1VuHY"
-    },
-    {
-      "rating": 5,
-      "comment": "zoooooooooor",
-      "createdAt": "2026-09-01T17:10:34.885Z",
-      "id": "nUU04iDubzM"
-    },
-    {
-      "rating": 5,
-      "comment": "cevfev",
-      "createdAt": "2026-09-02T08:59:34.776Z",
-      "id": "rHDp0m8FAgQ"
-    }
-  ],
+  "reviews": [],
   "certificates": [
     {
       "id": "cert-1",
