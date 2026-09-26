@@ -235,7 +235,13 @@ export default function AdminDashboard() {
               </option>
             ))}
           </select>
-          <button className="btn btn-outline" onClick={fetchRegistrations}>
+          <button
+            className="btn btn-outline"
+            onClick={async () => {
+              const res = await fetchRegistrations();
+              toast.info(`Ro'yxat yangilandi (${res?.length || 0} ta ariza)`);
+            }}
+          >
             Yangilash
           </button>
           <button className="btn btn-outline" onClick={handleExport}>

@@ -21,9 +21,9 @@ app.set('trust proxy', 1);
 
 // CORS_ORIGIN — vergul bilan ajratilgan ruxsat etilgan saytlar ro'yxati
 // (masalan: https://sizning-sayt.vercel.app). Bo'sh bo'lsa hamma saytga ruxsat.
-const corsOrigins = (process.env.CORS_ORIGIN || '').split(',').map(o => o.trim().replace(/\/$/, '')).filter(Boolean);
 app.use(cors({
-  origin: corsOrigins.length ? corsOrigins : '*',
+  origin: true,
+  credentials: true,
   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -449,6 +449,7 @@ app.post('/api/login', loginLimiter, async (req, res) => {
 });
 
 app.get('/registrations', requireAdmin, async (req, res) => {
+  let serverList = [];
   if (usePostgres && pool) {
     try {
       const result = await pool.query(`
@@ -466,13 +467,27 @@ app.get('/registrations', requireAdmin, async (req, res) => {
         FROM registrations
         ORDER BY created_at DESC
       `);
-      return res.json(result.rows);
+      serverList = result.rows || [];
     } catch (err) {
       console.error("Arizalarni olishda xato (Postgres), JSON ga o'tilmoqda:", err.message);
     }
   }
+
   const db = readLocalDb();
-  return res.json(db.registrations || []);
+  const localList = db.registrations || [];
+
+  const map = new Map();
+  [...serverList, ...localList].forEach((item) => {
+    if (item && item.id) {
+      map.set(item.id, { ...map.get(item.id), ...item });
+    }
+  });
+
+  const merged = Array.from(map.values()).sort(
+    (a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0)
+  );
+
+  return res.json(merged);
 });
 
 app.post('/registrations', registrationLimiter, async (req, res) => {
@@ -505,6 +520,19 @@ app.post('/registrations', registrationLimiter, async (req, res) => {
     createdAt: createdDate
   };
 
+  console.log("📥 YANGI ARIZA QABUL QILINDI:", newItem.fullName, newItem.phone);
+
+  // Har doim mahalliy faylga saqlab qo'yamiz (har ehtimolga qarshi)
+  const db = readLocalDb();
+  db.registrations = db.registrations || [];
+  const idx = db.registrations.findIndex(r => r.id === newId);
+  if (idx >= 0) {
+    db.registrations[idx] = newItem;
+  } else {
+    db.registrations.unshift(newItem);
+  }
+  writeLocalDb(db);
+
   if (usePostgres && pool) {
     try {
       const result = await pool.query(`
@@ -528,19 +556,10 @@ app.post('/registrations', registrationLimiter, async (req, res) => {
 
       return res.status(201).json(result.rows[0]);
     } catch (err) {
-      console.error("Arizani saqlashda xato (Postgres), JSON ga saqlanmoqda:", err.message);
+      console.error("Arizani saqlashda xato (Postgres), JSON varianti ishlatilmoqda:", err.message);
     }
   }
 
-  const db = readLocalDb();
-  db.registrations = db.registrations || [];
-  const idx = db.registrations.findIndex(r => r.id === newId);
-  if (idx >= 0) {
-    db.registrations[idx] = newItem;
-  } else {
-    db.registrations.unshift(newItem);
-  }
-  writeLocalDb(db);
   return res.status(201).json(newItem);
 });
 
