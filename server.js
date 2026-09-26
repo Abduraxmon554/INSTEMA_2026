@@ -372,15 +372,13 @@ async function initPostgres() {
       }
     }
 
-    const reviewsCountRes = await client.query('SELECT COUNT(*) FROM reviews');
-    if (parseInt(reviewsCountRes.rows[0].count, 10) === 0 && seed.reviews?.length) {
-      for (const r of seed.reviews) {
-        await client.query(
-          'INSERT INTO reviews (id, registration_id, rating, comment, created_at) VALUES ($1, $2, $3, $4, $5) ON CONFLICT (id) DO NOTHING',
-          [r.id || crypto.randomUUID(), r.registrationId || null, r.rating || 5, r.comment, r.createdAt || new Date().toISOString()]
-        );
-      }
-    }
+    await client.query(`
+      DELETE FROM reviews
+      WHERE comment IN ('cevfev', 'zoooooooooor', 'zorakan', 'Juda ajoyib master-class! Juan José juda yaxshi o''qitdi.')
+         OR comment LIKE 'cevfev%'
+         OR comment LIKE 'zooo%'
+         OR comment LIKE 'zora%'
+    `);
 
     const certCountRes = await client.query('SELECT COUNT(*) FROM certificates');
     if (parseInt(certCountRes.rows[0].count, 10) === 0 && seed.certificates?.length) {
@@ -654,6 +652,9 @@ app.delete('/registrations/:id', requireAdmin, async (req, res) => {
 });
 
 app.get('/reviews', async (req, res) => {
+  const TEST_COMMENTS = ["cevfev", "zoooooooooor", "zorakan", "Juda ajoyib master-class! Juan José juda yaxshi o'qitdi."];
+  let serverReviews = [];
+  if (usePostgres && pool) {
     try {
       const result = await pool.query(`
         SELECT
@@ -663,13 +664,33 @@ app.get('/reviews', async (req, res) => {
           comment,
           created_at AS "createdAt"
         FROM reviews
+        WHERE comment NOT IN ('cevfev', 'zoooooooooor', 'zorakan', 'Juda ajoyib master-class! Juan José juda yaxshi o''qitdi.')
+          AND comment NOT LIKE 'cevfev%'
+          AND comment NOT LIKE 'zooo%'
+          AND comment NOT LIKE 'zora%'
         ORDER BY created_at DESC
       `);
-      return res.json(result.rows);
+      serverReviews = result.rows || [];
     } catch (err) {
-      console.error("Sharhlarni olishda xato:", err);
-      return res.status(500).json({ error: "Sharhlarni olishda xatolik" });
+      console.error("Sharhlarni olishda xato (Postgres):", err.message);
     }
+  }
+
+  const db = readLocalDb();
+  const localReviews = (db.reviews || []).filter(r => r && r.comment && !TEST_COMMENTS.includes(r.comment.trim()));
+
+  const map = new Map();
+  [...serverReviews, ...localReviews].forEach((item) => {
+    if (item && item.id && item.comment && !TEST_COMMENTS.includes(item.comment.trim())) {
+      map.set(item.id, { ...map.get(item.id), ...item });
+    }
+  });
+
+  const merged = Array.from(map.values()).sort(
+    (a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0)
+  );
+
+  return res.json(merged);
 });
 
 app.post('/reviews', reviewLimiter, async (req, res) => {
@@ -678,11 +699,25 @@ app.post('/reviews', reviewLimiter, async (req, res) => {
   if (!comment) {
     return res.status(400).json({ error: "Sharh matnini kiriting." });
   }
-  const registrationId = null; // ochiq forma orqali ariza bilan bog'lanmaydi
+  const registrationId = null;
   const newId = crypto.randomUUID();
   const createdDate = new Date().toISOString();
   const numRating = Math.min(5, Math.max(1, parseInt(body.rating, 10) || 5));
 
+  const newReviewItem = {
+    id: newId,
+    registrationId: null,
+    rating: numRating,
+    comment,
+    createdAt: createdDate
+  };
+
+  const db = readLocalDb();
+  db.reviews = db.reviews || [];
+  db.reviews.unshift(newReviewItem);
+  writeLocalDb(db);
+
+  if (usePostgres && pool) {
     try {
       const result = await pool.query(`
         INSERT INTO reviews (id, registration_id, rating, comment, created_at)
@@ -697,9 +732,11 @@ app.post('/reviews', reviewLimiter, async (req, res) => {
 
       return res.status(201).json(result.rows[0]);
     } catch (err) {
-      console.error("Sharh qo'shishda xato:", err);
-      return res.status(500).json({ error: "Sharhni saqlashda xatolik" });
+      console.error("Sharh qo'shishda xato (Postgres):", err.message);
     }
+  }
+
+  return res.status(201).json(newReviewItem);
 });
 
 app.get('/certificates', requireAdmin, async (req, res) => {
