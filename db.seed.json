@@ -4,7 +4,7 @@
     {
       "id": "1",
       "day": 1,
-      "date": "2026-09-15",
+      "date": "2027-01-29",
       "sessions": [
         {
           "time": "09:00 - 10:30",
@@ -29,7 +29,7 @@
     {
       "id": "2",
       "day": 2,
-      "date": "2026-09-16",
+      "date": "2027-02-01",
       "sessions": [
         {
           "time": "09:00 - 10:30",
@@ -87,7 +87,7 @@
       "profession": "Fizioterapevt",
       "eventTitle": "Toshkentda xalqaro amaliy master-class",
       "speaker": "Juan José Boscà Gandía",
-      "issueDate": "2026-09-17",
+      "issueDate": "2027-02-02",
       "hoursAttended": 12,
       "createdAt": "2026-08-25T10:00:00.000Z"
     }
