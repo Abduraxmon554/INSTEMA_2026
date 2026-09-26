@@ -75,6 +75,10 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     fetchRegistrations();
+    const interval = setInterval(() => {
+      fetchRegistrations(true);
+    }, 10000);
+    return () => clearInterval(interval);
   }, [fetchRegistrations]);
 
   const filtered = useMemo(() => {

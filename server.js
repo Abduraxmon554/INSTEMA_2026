@@ -173,6 +173,9 @@ function writeLocalDb(data) {
     const dir = path.dirname(LOCAL_DB_PATH);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(LOCAL_DB_PATH, JSON.stringify(data, null, 2), 'utf-8');
+    try {
+      fs.writeFileSync(DB_SEED_PATH, JSON.stringify(data, null, 2), 'utf-8');
+    } catch {}
   } catch (err) {
     console.error("data/db.json ga yozishda xatolik:", err.message);
   }

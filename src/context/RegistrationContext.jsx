@@ -51,8 +51,8 @@ export function RegistrationProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchRegistrations = useCallback(async () => {
-    setLoading(true);
+  const fetchRegistrations = useCallback(async (silent = false) => {
+    if (!silent) setLoading(true);
     setError(null);
     let serverData = [];
     try {
@@ -83,7 +83,7 @@ export function RegistrationProvider({ children }) {
     );
 
     setRegistrations(merged);
-    setLoading(false);
+    if (!silent) setLoading(false);
 
     // Background sync: attempt to send un-synced local items to server
     if (localData.length > 0 && serverData.length >= 0) {
