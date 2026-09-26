@@ -38,14 +38,16 @@ export default function Schedule() {
           {schedule.map((day) => (
             <div key={day.id} className="schedule-day">
               <div className="day-header">
-                <span className="day-number">Kun {day.day}</span>
+                <div className="day-title-wrap">
+                  <span className="day-number">Kun {day.day}</span>
+                  <span className="day-time-badge">⏰ 09:00 – 17:00</span>
+                </div>
                 <span className="day-date">{day.date}</span>
               </div>
 
               <div className="sessions">
                 {day.sessions.map((session, idx) => (
                   <div key={idx} className="session-card">
-                    <div className="session-time">⏰ {session.time}</div>
                     <div className="session-title">{session.title}</div>
                     <div className="session-description">{session.description}</div>
                     <div className="session-speaker">👨‍🏫 {session.speaker}</div>
@@ -57,7 +59,7 @@ export default function Schedule() {
         </div>
 
         <div className="schedule-total">
-          <p>📌 Jami davomiyligi: <strong>12 soat</strong></p>
+          <p>📌 Kunlik vaqt: <strong>09:00 – 17:00 gacha</strong></p>
           <p>📍 Joylar cheklangan - Dastlab ro'yxatdan o'ting!</p>
         </div>
       </div>

@@ -1,5 +1,5 @@
 export const EVENT_START_ISO = "2027-01-29T09:00:00+05:00";
-export const EVENT_END_ISO = "2027-02-01T15:00:00+05:00";
+export const EVENT_END_ISO = "2027-02-01T17:00:00+05:00";
 export const EVENT_TIMEZONE = "Asia/Tashkent";
 
 export function getEventStartDate() {

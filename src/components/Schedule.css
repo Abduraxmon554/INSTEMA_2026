@@ -46,10 +46,25 @@
   border-bottom: 3px solid #007bff;
 }
 
+.day-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .day-number {
   font-size: 1.5rem;
   font-weight: bold;
   color: #007bff;
+}
+
+.day-time-badge {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #007bff;
+  background: rgba(0, 123, 255, 0.1);
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
 }
 
 .day-date {
@@ -175,6 +190,11 @@
 [data-theme="dark"] .day-date {
   background: var(--line);
   color: var(--ink);
+}
+
+[data-theme="dark"] .day-time-badge {
+  background: rgba(77, 163, 255, 0.15);
+  color: #4da3ff;
 }
 
 [data-theme="dark"] .session-description,
