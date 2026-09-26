@@ -61,11 +61,6 @@ export default function Reviews() {
       setTimeout(() => setSubmitted(false), 3000);
       return;
     }
-    const elapsedSeconds = (Date.now() - mountedAt.current) / 1000;
-    if (elapsedSeconds < MIN_SUBMIT_SECONDS) {
-      setSubmitError("Iltimos, formani qayta tekshirib yuboring.");
-      return;
-    }
 
     const review = {
       rating: parseInt(newReview.rating, 10) || 5,

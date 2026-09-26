@@ -51,6 +51,9 @@ export default function Home() {
         <Reveal variant="up">
           <RegisterSection />
         </Reveal>
+        <Reveal variant="fade">
+          <Reviews />
+        </Reveal>
         <Reveal variant="up">
           <FAQ />
         </Reveal>
