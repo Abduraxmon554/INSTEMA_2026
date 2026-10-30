@@ -1,0 +1,22 @@
+{
+  "appId": "uz.instema.app",
+  "appName": "INSTEMA",
+  "webDir": "dist",
+  "server": {
+    "url": "https://instema.uz",
+    "cleartext": false,
+    "allowNavigation": [
+      "instema.uz",
+      "*.instema.uz"
+    ]
+  },
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false
+  },
+  "ios": {
+    "contentInset": "automatic",
+    "limitsNavigationsToAppBoundDomains": true
+  }
+}

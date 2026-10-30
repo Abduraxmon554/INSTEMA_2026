@@ -11,9 +11,18 @@
     "dev:all": "concurrently -n WEB,API -c blue,green \"npm:dev\" \"npm:server\"",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "mobile:build": "vite build && npx cap sync",
+    "mobile:android": "vite build && npx cap sync android && npx cap open android",
+    "mobile:ios": "vite build && npx cap sync ios && npx cap open ios",
+    "cap:sync": "npx cap sync",
+    "cap:update": "npx cap update"
   },
   "dependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/cli": "^8.6.0",
+    "@capacitor/core": "^8.6.0",
+    "@capacitor/ios": "^8.6.0",
     "concurrently": "^10.0.5",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
